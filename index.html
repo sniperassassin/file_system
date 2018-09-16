@@ -1,0 +1,208 @@
+<html>
+<head>
+	<title>SUMO LOGIC</title>
+	<style>
+	tr{
+		width:100%;
+		border:2px solid black;
+	}
+	td{
+		border:1px solid black;
+	}
+	a{
+		text-decoration: none;
+		color:green;
+		cursor: pointer;
+	}
+	div{
+		margin-left:20px;
+	}
+	body{
+		margin:0px;
+		padding:10px 0px;
+		color:red;
+		background-color:black;
+	}
+	</style>
+</head>
+<body>
+	<div id="jstext">
+	</div>
+<script type="text/javascript" src="data.js">
+</script>
+<script type="text/javascript">
+	var htmltext='';
+	function display(v)
+	{
+		var x=document.getElementById("show"+v);
+		var y=document.getElementById("sc"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displayGPR(v)
+	{
+		var x=document.getElementById("showGPR"+v);
+		var z=document.getElementById("showRDep"+v);
+		var y=document.getElementById("sc1"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displayINS(v)
+	{
+		var x=document.getElementById("showINS1"+v);
+		var z=document.getElementById("showINS2"+v);
+		var y=document.getElementById("sc2"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displayFir(v)
+	{
+		var x=document.getElementById("showFir"+v);
+		var z=document.getElementById("showSec"+v);
+		var y=document.getElementById("sc3"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displaySec(v)
+	{
+		var x=document.getElementById("showThird"+v);
+		var z=document.getElementById("showFourth"+v);
+		var y=document.getElementById("sc4"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displayDep(v)
+	{
+		var x=document.getElementById("showDep1"+v);
+		var z=document.getElementById("showDep2"+v);
+		var y=document.getElementById("sc5"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displayDFir(v)
+	{
+		var x=document.getElementById("showDFir"+v);
+		var z=document.getElementById("showDSec"+v);
+		var y=document.getElementById("sc6"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	function displayDSec(v)
+	{
+		var x=document.getElementById("showDThird"+v);
+		var z=document.getElementById("showDFourth"+v);
+		var y=document.getElementById("sc7"+v);
+		if(x.style.display==="none")
+		{
+			x.style.display="block";
+			z.style.display="block";
+			y.innerHTML='[-]';
+		}	
+		else
+		{
+			x.style.display="none";
+			z.style.display="none";
+			y.innerHTML='[+]';
+		}	
+	}
+	for (var key in data)
+	{
+		htmltext+='<div><a onclick="display('+key+')"><span id="sc'+key+'">[+]</span>show data'+key+'</a></div>';
+		htmltext+='<div id="show'+key+'" style="display:none;">';
+			htmltext+='<div>'+data[key].title+'</div>';
+			htmltext+='<div><a  onclick="displayGPR('+key+')"><span id="sc1'+key+'">[+]</span>Game Play Resources</a>';
+				htmltext+='<div id="showGPR'+key+'" style="display:none;"><a  onclick="displayINS('+key+')"><span id="sc2'+key+'">[+]</span>Installation</a>';
+					htmltext+='<div id="showINS1'+key+'" style="display:none;"><a  onclick="displayFir('+key+')"><span id="sc3'+key+'">[+]</span>First</a>';
+						htmltext+='<div id="showFir'+key+'" style="display:none;">'+data[key].Game_play_resources.Installation[0].file_name+'</div>';
+						htmltext+='<div id="showSec'+key+'" style="display:none;">'+data[key].Game_play_resources.Installation[0].type+'</div>';
+					htmltext+='</div>';
+					htmltext+='<div id="showINS2'+key+'" style="display:none;"><a  onclick="displaySec('+key+')"><span id="sc4'+key+'">[+]</span>Second</a>';
+						htmltext+='<div id="showThird'+key+'" style="display:none;">'+data[key].Game_play_resources.Installation[1].file_name+'</div>';
+						htmltext+='<div id="showFourth'+key+'" style="display:none;">'+data[key].Game_play_resources.Installation[1].type+'</div>';
+					htmltext+='</div>';
+				htmltext+='</div>';
+				htmltext+='<div id="showRDep'+key+'" style="display:none;"><a  onclick="displayDep('+key+')"><span id="sc5'+key+'">[+]</span>Resource Dependency</a>';
+					htmltext+='<div id="showDep1'+key+'" style="display:none;"><a  onclick="displayDFir('+key+')"><span id="sc6'+key+'">[+]</span>First</a>';
+						htmltext+='<div id="showDFir'+key+'" style="display:none;">'+data[key].Game_play_resources.Resource_Dependency[0].file_name+'</div>';
+						htmltext+='<div id="showDSec'+key+'" style="display:none;">'+data[key].Game_play_resources.Resource_Dependency[0].type+'</div>';
+					htmltext+='</div>';
+					htmltext+='<div id="showDep2'+key+'" style="display:none;"><a  onclick="displayDSec('+key+')"><span id="sc7'+key+'">[+]</span>Second</a>';
+						htmltext+='<div id="showDThird'+key+'" style="display:none;">'+data[key].Game_play_resources.Resource_Dependency[1].file_name+'</div>';
+						htmltext+='<div id="showDFourth'+key+'" style="display:none;">'+data[key].Game_play_resources.Resource_Dependency[1].type+'</div>';
+					htmltext+='</div>';
+				htmltext+='</div>';
+			htmltext+='</div>';
+		htmltext+='</div>';
+	}
+	document.getElementById('jstext').innerHTML=htmltext;
+</script>
+</body>
+</html>
